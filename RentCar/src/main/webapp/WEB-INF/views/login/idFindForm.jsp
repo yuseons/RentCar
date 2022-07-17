@@ -5,7 +5,14 @@
 <head>
   <title>아이디 찾기</title>
   <meta charset="utf-8">
-  <script type="text/javascript">
+ 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
+  
+<link rel="stylesheet" href="/css/login.css">
+  
+      <script type="text/javascript">
   	$(function(){
   		$("#btn").click(function(){
   			if($("#mname").val()==''){
@@ -34,42 +41,43 @@
 	  			.catch(console.log);
    }
   </script>
-</head>
-<body>
-<div class="container">
 
-<h1 class="col-sm-offset-2 col-sm-10">아이디 찾기</h1>
-  <form class="form-horizontal">          
-    <div class="form-group">
-      <label class="control-label col-sm-2" for="mname">이름</label>
-      <div class="col-sm-4">
-        <input type="text" class="form-control" id="mname" 
-        placeholder="Enter mname" name="mname" required="required">
-      </div>
-    </div>
-    <div class="form-group">
-      <label class="control-label col-sm-2" for="email">이메일</label>
-      <div class="col-sm-4">          
-        <input type="email" class="form-control" id="email" 
-        placeholder="Enter email" name="email" required="required">
-      </div>
-    </div>
+  </head>
+ 
+<body>
+
+    <div class="loginbox">
+    <div class="form-block">
+   
+    <fieldset>
+  <h1><strong>아이디 찾기</strong></h1>
+  <p> 가입된 정보를 입력하세요.</p>
+
+   <form>
+   <label for="mname">이름</label>
+   <input type="text" class="form-control" id="mname" name="mname" required="required" placeholder="이름을 입력하세요">
+   <label for="email">이메일</label>
+   <input type="email" class="form-control" id="email" name="email"  required="required" placeholder="이메일을 입력하세요">
+
+
     <div class="form-group">        
-      <div class="col-sm-offset-2 col-sm-8">
-        <button type="button" class="btn btn-default" id="btn">찾기</button>
-        <button type="button" class="btn btn-default"
-         onclick="location.href='agree'">회원가입</button>
-         <button type="button" onclick="location.href='/user/pwfind'" class="btn btn-default">패스워드 찾기</button>
-         <button type="button" onclick="location.href='/user/login'" class="btn btn-default">취소</button>
-      </div>
-    </div>
-    <div class="form-group">        
-     <div class="col-sm-offset-2 col-sm-8"> 
+     <div class="message"> 
      <span id="msg"></span>
      </div>
      </div>
-  </form>
+      <button type="button" class="btn btn-pill btn-block btn-info" id="btn" style="font-size:16px;">찾기</button>
 
+		<div class ="find" align="center">
+		<p>
+			<br><br><a href="/user/pwfind">비밀번호 찾기</a><br><br>
+		</p>
+		<p>
+			<a href="/user/agree" style="color:#2F9D27;">회원가입</a>
+		</p>	
+		</div>
+ 	</form>
+ </fieldset>
+</div>
 </div>
 </body>
 </html>

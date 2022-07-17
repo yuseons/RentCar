@@ -14,62 +14,72 @@
 </c:choose>
 <!DOCTYPE html> 
 <html> 
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>top</title>
-        <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="/css/top.css" rel="stylesheet" />
-        
-<style type="text/css">
+<head>
+  <title>memo</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <style type="text/css">
   #grade{
   
    color :white;
   }  
- </style>
-        
-    </head>
-    <body>
-        <!-- Responsive navbar-->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container">
-                <a class="navbar-brand" href="${root}/">Home</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item"><a class="nav-link" href="${root}/user/agree">JOIN</a></li>
-                        <li class="nav-item"><a class="nav-link" href="${root}/user/login">LOGIN</a></li>
-                        
-                        
-                        <li class="nav-item"><a class="nav-link" href="${root}/admin/contents/create">상품등록</a></li>
-                        <li class="nav-item"><a class="nav-link" href="${root}/admin/contents/list">상품목록</a></li>
-                        <li class="nav-item"><a class="nav-link" href="${root}/admin/user/list">회원목록</a></li>
-                        <li class="nav-item"><a class="nav-link" href="${root}/admin/order/list">주문목록</a></li>
-                        <li class="nav-item"><a class="nav-link" href="${root}/user/logout">로그아웃</a></li>
-                        
-                        
-                        
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</a>
-                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                <li><hr class="dropdown-divider" /></li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+  </style>
 
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="/js/top.js"></script>
-    </body>
+</head>
+<body> 
+<!--상단메뉴-->
+<div class="container-fluid" id="top">
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="${root}/">Home</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Product
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu" id="pmenu">
+        </ul>
+      </li>
+            <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">community
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="${root}/user/mypage">Mypage</a></li>
+          <li><a href="${root}/contents/detail">Review</a></li>
+          <li><a href="/notice/list">Notice</a></li>
+          <li><a href="/naver_chatting">Q&A</a></li>
+        </ul>
+      </li>
+    <li><a id="grade"><span class="glyphicon glyphicon-grain"></span> ${str}</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+     <c:choose>
+    <c:when test="${empty sessionScope.id }">
+      <li><a href="${root}/user/agree"><span class="glyphicon glyphicon-user"></span> JOIN</a></li>
+      <li><a href="${root}/user/login"><span class="glyphicon glyphicon-log-in"></span> LOGIN</a></li>
+    </c:when>
+    <c:when test="${not empty sessionScope.id && sessionScope.grade == 'A'}">
+    <li><a href="${root}/admin/contents/create"><span class="glyphicon glyphicon-plus-sign"></span> 상품등록</a></li>
+    <li><a href="${root}/admin/contents/list"><span class="glyphicon glyphicon-list"></span> 상품목록</a></li>
+    <li><a href="${root}/admin/user/list"><span class="glyphicon glyphicon-list"></span> 회원목록</a></li>
+    <li><a href="${root}/admin/order/list"><span class="glyphicon glyphicon-list"></span> 주문목록</a></li>
+    <li><a href="${root}/user/logout"><span class="glyphicon glyphicon-log-out"></span> 로그아웃</a></li>
+    </c:when>
+    <c:otherwise>
+    <li><a href="${root}/cart/list"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+    <li><a href="${root}/user/update"><span class="glyphicon glyphicon-edit"></span> 회원수정</a></li>
+    <li><a href="${root}/user/logout"><span class="glyphicon glyphicon-log-out"></span> 로그아웃</a></li>
+        </c:otherwise>
+    </c:choose> 
+  
+    </ul>
+  </div>
+</nav>
+ 
+</div>
+</body>
 </html>
