@@ -42,4 +42,13 @@
 			value="/WEB-INF/views/login/pwFindForm.jsp" />
 	</definition>
  
+ 
+ <!-- ocr 테스트 -->
+ 	<definition name="/lic" extends="main">
+		<put-attribute name="title" value="ocr 테스트"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/login/licInfo.jsp" />
+	</definition>
+ 
+ 
 </tiles-definitions>

@@ -13,7 +13,7 @@ public class UploadLicense {
             System.out.println("Windows 10: " + path);
             
         } else {
-            // System.out.println("Linux");
+
             path = "/root/deploy/user/storage/";
         }
         
