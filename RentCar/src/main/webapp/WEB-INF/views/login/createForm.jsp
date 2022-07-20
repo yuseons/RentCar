@@ -257,6 +257,7 @@ function inCheck(f){
         name="fnameMF" accept=".jpg,.gif,.png">
         <label>* 1MB이하의 파일만 업로드 해주세요. </label>
       </div>
+        <input type="text" class="form-control" id="jumin" name="jumin"> 주민등록 출력 확인
       <button type="button" class="btn btn-primary-outline" onclick="licInfo(document.frm.fnameMF.value)">운전면허증 확인</button>
     </div>
         <div class="form-group">
