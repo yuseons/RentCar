@@ -25,10 +25,10 @@
   
 </head>
 <body> 
-<div class="container">
+<div class="agreebox">
     <div class="form-block">
-	<div class="mb-4">
-       <h3><strong>약관동의</strong></h3>
+	<div class="mb-4" align="center">
+       <h1><strong>약관동의</strong></h1><br>
        <p style="font-size:20px;">이용약관에 동의해 주세요.</p><br><br>
      </div>
                 
@@ -40,7 +40,7 @@
       >
  
   
-  <div class="form-group">
+  <div class="form-group" align="center">
     <label class="control-label col-sm-1" for="content"></label>
     <div class="col-sm-8">
     <textarea rows="20" cols="100" id="content" name="content" class="form-control" style="font-size:15px;">Cummunity 서비스약관 (2005. 7. 18 부터 유효) 
@@ -225,16 +225,21 @@
     </div>
   </div>
   
-   <div class="form-group">
+   <div class="form-group" align="center">
    <div class="col-sm-offset-2 col-sm-5">
-   <label class="control control--checkbox mb-0">
-   <input id="agree" type="checkbox" name="agree" value="1" ><label for="agree" >약관에 동의합니다 </label>
-      <div class="control__indicator"></div>
+   <label class="control control--checkbox mb-0" >
+<div>
+
+<br>
+   <input id="agree" type="checkbox" name="agree" value="1"><label for="agree" > 약관에 동의합니다 </label>
+
+</div>
       </label>
     </div>
     <div>
-    <button class="btn btn-info">회원가입</button>
-    <button type="button" class="btn btn-primary-outline" onclick="history.back()">취소</button>
+    <br>
+    <button class="agreebtn">회원가입</button><br>
+    <button type="button" class="btn_2" onclick="history.back()">취소</button>
    </div>
  </div>
 </form>

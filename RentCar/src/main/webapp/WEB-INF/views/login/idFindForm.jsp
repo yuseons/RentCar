@@ -51,9 +51,9 @@
    
     <fieldset>
   <h1><strong>아이디 찾기</strong></h1>
-  <p> 가입된 정보를 입력하세요.</p>
+  <p> 가입된 정보를 입력하세요.</p><br><br>
 
-   <form>
+   <div class="info">
    <label for="mname">이름</label>
    <input type="text" class="form-control" id="mname" name="mname" required="required" placeholder="이름을 입력하세요">
    <label for="email">이메일</label>
@@ -65,17 +65,17 @@
      <span id="msg"></span>
      </div>
      </div>
-      <button type="button" class="btn btn-pill btn-block btn-info" id="btn" style="font-size:16px;">찾기</button>
+      <button type="button" class="loginbtn" id="btn" style="font-size:16px;">찾기</button>
 
 		<div class ="find" align="center">
 		<p>
 			<br><br><a href="/user/pwfind">비밀번호 찾기</a><br><br>
 		</p>
 		<p>
-			<a href="/user/agree" style="color:#2F9D27;">회원가입</a>
+			<a href="/user/agree" style="color:#489CFF;">회원가입</a>
 		</p>	
 		</div>
- 	</form>
+ 	</div>
  </fieldset>
 </div>
 </div>
