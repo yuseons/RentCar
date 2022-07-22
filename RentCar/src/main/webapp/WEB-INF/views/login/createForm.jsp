@@ -5,9 +5,7 @@
   <title>회원가입</title>
   <meta charset="utf-8">  
   
-  	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
     <link rel="stylesheet" href="/css/login.css">
   
@@ -207,12 +205,11 @@ function inCheck(f){
 </head>
 <body>
 
-    <div class="createbox">
+<div class="container">
 
     <div class="form-block">
-   
 	<div class="mb-4">
-       <h1><strong>회원가입</strong></h1>
+       <h3><strong>회원가입</strong></h3>
        <p style="font-size:20px;">( <span id="need">*</span> 필수입력사항)</p><br><br>
      </div>
 
@@ -258,6 +255,7 @@ function inCheck(f){
         name="fnameMF" accept=".jpg,.gif,.png">
         <label>* 1MB이하의 파일만 업로드 해주세요. </label>
       </div>
+        <input type="text" class="form-control" id="jumin" name="jumin"> 주민등록 출력 확인
       <button type="button" class="btn btn-primary-outline" onclick="licInfo(document.frm.fnameMF.value)">운전면허증 확인</button>
     </div>
         <div class="form-group">
@@ -265,11 +263,6 @@ function inCheck(f){
       <div class="col-sm-4">          
         <input type="text" class="form-control" id="license" 
         placeholder="Enter license"  name="license">
-      </div>
-            <label class="control-label col-sm-2" for="license"><span id="need">*</span>주민등록 출력 확인</label>
-            <div class="col-sm-4">          
-        <input type="text" class="form-control" id="jumin" 
-        placeholder="jumin"  name="jumin">
       </div>
     </div>
     <div class="form-group">

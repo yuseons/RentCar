@@ -23,6 +23,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -46,30 +47,25 @@ public class LoginController {
   @Qualifier("com.rentcar.login.service.LoginServiceImpl")
   private LoginService service;
 
-  @GetMapping("/user/pwfind")
-  public String pwfind() {
 
-    return "/user/pwfind";
-  }
 
-  @GetMapping("/user/idfind")
-  public String idfind() {
+  @Value("${login.url}")
+  private String apiURL;
 
-    return "/user/idfind";
-  }
+  @Value("${login.secret-key}")
+  private String secretKey;
 
+
+  //ocr
   @PostMapping("/license")
   @ResponseBody
   public ResponseEntity<Map> licInfo(MultipartFile fname) {
-    
+
     String upDir = UploadLicense.getUploadDir();
     String fname2 = Utility.saveFileSpring(fname, upDir);
 
-
-    String apiURL = "https://0oe8jve3j4.apigw.ntruss.com/custom/v1/16869/83050ee89a1b0c80bf5c1d4a4f14359bfeb55294b354032ac8d797ff55fb106f/general";
-    String secretKey = "Q3pjdUNpWkxIekhVUk9wd1N1blluWUdjemhIQ2R6UGs=";
     String imageFile = UploadLicense.getUploadDir() + "\\" + fname2;
-    
+
     Map map = new HashMap();
 
     try {
@@ -134,10 +130,6 @@ public class LoginController {
       for (int i = 0; i < jsonArr2.length(); i++) {
         sb.append(" " + jsonArr2.getJSONObject(i).get("inferText"));
 
-//        if (i == 1) {
-//          sb.append("\n");
-//        }
-
       }
 
       // System.out.println(sb);
@@ -174,6 +166,20 @@ public class LoginController {
   public String licInfo() {
 
     return "/lic";
+  }
+
+
+
+  @GetMapping("/user/pwfind")
+  public String pwfind() {
+
+    return "/user/pwfind";
+  }
+
+  @GetMapping("/user/idfind")
+  public String idfind() {
+
+    return "/user/idfind";
   }
 
   @PostMapping("/user/create")

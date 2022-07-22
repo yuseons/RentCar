@@ -21,15 +21,15 @@ public class LoginRestController {
 
     @GetMapping("/user/pwfindex")
     public String pwfind(@RequestParam Map<String, String> map) {
-      
-      String pw = service.pwFind(map);
-      
-      if(pw != null && !pw.equals("")) {
-        return "찾으시는 비밀번호는 "+pw+"입니다";
-      }else {
-        return "일치하는 정보가 없습니다.";
-      }
-      
+
+        String pw = service.pwFind(map);
+
+        if(pw != null && !pw.equals("")) {
+            return "찾으시는 비밀번호는 "+pw+"입니다";
+        }else {
+            return "일치하는 정보가 없습니다.";
+        }
+
     }
 
     @GetMapping("/user/idfindex")

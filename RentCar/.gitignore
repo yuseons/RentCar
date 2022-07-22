@@ -6,8 +6,7 @@ build/
 !**/src/test/**/build/
 
 
-/src/main/java/com/rentcar/ocr/ocrAPI.java
-/src/main/resources/application.properties
+/src/main/resources/*.properties
 
 ### STS ###
 .apt_generated
