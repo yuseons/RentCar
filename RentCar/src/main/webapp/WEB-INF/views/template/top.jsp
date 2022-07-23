@@ -74,6 +74,7 @@
                 </li>
                 <div class="dropdown-content">
                   <a href="/user/login">Login</a>
+                  <a href="/user/agree">Join</a>
                   <a href="#">My Page</a>
                   <a href="#">Link 3</a>
                 </div>
