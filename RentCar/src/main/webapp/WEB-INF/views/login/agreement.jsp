@@ -6,10 +6,6 @@
   <title>회원약관</title>
   <meta charset="utf-8">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
-
     <link rel="stylesheet" href="/css/login.css">
 
   <script type="text/javascript">
@@ -25,7 +21,7 @@
 
 </head>
 <body>
-<div class="agreebox">
+<div>
     <div class="form-block">
 	<div class="mb-4" align="center">
        <h1><strong>약관동의</strong></h1><br>

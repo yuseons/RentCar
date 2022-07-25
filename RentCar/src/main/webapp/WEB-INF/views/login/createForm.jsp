@@ -205,11 +205,10 @@ function inCheck(f){
 </head>
 <body>
 
-<div class="container">
-
+    <div class="createbox">
     <div class="form-block">
 	<div class="mb-4">
-       <h3><strong>회원가입</strong></h3>
+       <h1><strong>회원가입</strong></h1>
        <p style="font-size:20px;">( <span id="need">*</span> 필수입력사항)</p><br><br>
      </div>
 
@@ -222,106 +221,105 @@ function inCheck(f){
         
 <!--  주민번호 ocr한 값 -->
     <input type="hidden" name="jumin" id="jumin" value="">
- 
-    
-    <div class="form-group">
+
+	<div class="info">
       <label class="control-label col-sm-2" for="id"><span id="need">*</span>아이디</label>
-      <div class="col-sm-3">          
-        <input type="text" class="form-control" id="id" placeholder="Enter id" 
+      <div class="col-sm-3">
+        <input type="text" class="form-control" id="id" placeholder="아이디를 입력하세요"
         name="id">
       </div>
-      <button type="button" class="btn btn-default col-sm-2" id="idcheck_btn"
-      onclick="idCheck(document.frm.id.value)">아이디 중복확인</button>
+        <button type="button" class="cre_btn" id="idcheck_btn"
+                onclick="idCheck(document.frm.id.value)">아이디 중복확인</button>
       <div id="idcheck"></div>
     </div>
-    <div class="form-group">
+
+	<div class="info">
       <label class="control-label col-sm-2" for="passwd"><span id="need">*</span>비밀번호</label>
-      <div class="col-sm-4">          
-        <input type="password" class="form-control" id="passwd" 
-        placeholder="Enter passwd"  name="passwd">
+      <div class="col-sm-4">
+        <input type="password" class="form-control" id="passwd"
+        placeholder="비밀번호를 입력하세요"  name="passwd">
       </div>
     </div>
-    <div class="form-group">
+	<div class="info">
       <label class="control-label col-sm-2" for="repasswd"><span id="need">*</span>비밀번호 확인</label>
-      <div class="col-sm-4">          
-        <input type="password" class="form-control" id="repasswd" 
+      <div class="col-sm-4">
+        <input type="password" class="form-control" id="repasswd"
         placeholder="Enter repasswd"  name="repasswd">
       </div>
     </div>
-        <div class="form-group">
+	<div class="info">
       <label class="control-label col-sm-2" for="fnameMF"><span id="need">*</span>운전면허증 사진</label>
       <div class="col-sm-4">
-        <input type="file" class="form-control" id="fnameMF" 
+        <input type="file" class="form-control" id="fnameMF"
         name="fnameMF" accept=".jpg,.gif,.png">
         <label>* 1MB이하의 파일만 업로드 해주세요. </label>
       </div>
         <input type="text" class="form-control" id="jumin" name="jumin"> 주민등록 출력 확인
       <button type="button" class="btn btn-primary-outline" onclick="licInfo(document.frm.fnameMF.value)">운전면허증 확인</button>
     </div>
-        <div class="form-group">
+	<div class="info">
       <label class="control-label col-sm-2" for="license"><span id="need">*</span>운전면허번호</label>
-      <div class="col-sm-4">          
-        <input type="text" class="form-control" id="license" 
+      <div class="col-sm-4">
+        <input type="text" class="form-control" id="license"
         placeholder="Enter license"  name="license">
       </div>
     </div>
-    <div class="form-group">
+	<div class="info">
       <label class="control-label col-sm-2" for="mname"><span id="need">*</span>이름</label>
-      <div class="col-sm-4">          
-        <input type="text" class="form-control" id="mname" 
+      <div class="col-sm-4">
+        <input type="text" class="form-control" id="mname"
         placeholder="Enter 이름"  name="mname">
       </div>
     </div>
-    <div class="form-group">
+	<div class="info">
       <label class="control-label col-sm-2" for="phone"><span id="need">*</span>전화번호</label>
-      <div class="col-sm-4">          
-        <input type="text" class="form-control" id="phone" 
+      <div class="col-sm-4">
+        <input type="text" class="form-control" id="phone"
         placeholder="Enter 전화번호"  name="phone">
       </div>
     </div>
-    <div class="form-group">
+	<div class="info">
       <label class="control-label col-sm-2" for="email"><span id="need">*</span>이메일</label>
-      <div class="col-sm-3">          
-        <input type="email" class="form-control" id="email" 
+      <div class="col-sm-3">
+        <input type="email" class="form-control" id="email"
         placeholder="Enter email"  name="email">
       </div>
-      
+
       <button type="button" class="btn btn-default col-sm-2"
       onclick="emailCheck(document.frm.email.value)">이메일 중복확인</button>
       <div id="emailcheck"></div>
-      
+
     </div>
-    <div class="form-group">
+	<div class="info">
       <label class="control-label col-sm-2" for="sample6_postcode">우편번호</label>
-      <div class="col-sm-1">          
-        <input type="text" class="form-control" 
+      <div class="col-sm-1">
+        <input type="text" class="form-control"
          name="zipcode" id="sample6_postcode" placeholder="우편번호">
       </div>
-      
+
       <button type="button" class="btn btn-default col-sm-2"
       onclick="sample6_execDaumPostcode()">주소 검색</button>
-      
     </div>
-    <div class="form-group">
+	<div class="info">
       <label class="control-label col-sm-2" for="sample6_address">주소</label>
-      <div class="col-sm-6">          
-        <input type="text" class="form-control" id="sample6_address" placeholder="주소" 
+      <div class="col-sm-6">
+        <input type="text" class="form-control" id="sample6_address" placeholder="주소"
          name="address1">
-        <input type="text" class="form-control" id="sample6_detailAddress" placeholder="상세주소" 
+        <input type="text" class="form-control" id="sample6_detailAddress" placeholder="상세주소"
          name="address2">
       </div>
     </div>
-       
-    <div>        
+
+    <div>
       <div class="col-sm-offset-2 col-sm-5">
       <br><br>
-        <button type="submit" class="btn btn-info">등록</button>
-        <button type="reset" class="btn btn-default" style="float:right;" onclick="history.back()">취소</button>
+        <button type="submit" class="agreebtn">등록</button>
+        <button type="reset" class="btn_2" style="float:right;" onclick="history.back()">취소</button>
       </div>
     </div>
+
   </form>
 
-<br><br>
 </div>
 </div>
 </body>
