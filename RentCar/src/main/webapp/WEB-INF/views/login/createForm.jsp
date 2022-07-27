@@ -12,45 +12,79 @@
   <style type="text/css">
   	#need{
   		color:red;
+  		font-size:13px;
   	}
 
 	#idcheck,#emailcheck{
 		color : red;
+		font-size: 15px;
 	}
-	.form-group button{
-	 color: #2F9D27;
-	}
+
 </style>
   <script type="text/javascript">
-  
-  function ocrtest(formData){
-	  
-	  return fetch(`/license`,{ 
+
+  function licOcr(formData){
+
+	  return fetch(`/license`,{
 		    method: 'POST',
 		    body: formData
 		  })
 	  		.then(response => response.json())
 	  		.catch(console.log);
   }
-  
+
   function licInfo(fname){
 	  const formData = new FormData();
 	  const fileField = document.querySelector('input[type="file"]');
 
 	  formData.append('fname', fileField.files[0]);
-	  
-	  ocrtest(formData)
-	  .then(result => {
-		  
-		  document.querySelector('#license').value = result.lic;
-		  document.querySelector('#jumin').value = result.jumin;
-		  
-	  }
-	  );
 
+	  licOcr(formData)
+	  .then(result => {
+
+		  document.querySelector('#license').value = result.licence.trim();
+		  document.querySelector('#jumin').value = result.jumin.replace("-","").trim();
+
+	  });
   }
-  
-  
+
+  function juminCheck(jumin){
+	  if(jumin==''){
+		  alert("운전면허증 확인 버튼을 눌러주새요.");
+	  }else{
+
+        var checknum = new Array(2,3,4,5,6,7,8,9,2,3,4,5);
+
+        var sum = 0;
+
+        for(var i=0; i<12; i++) {
+            sum += (jumin.charAt(i) - '0') * checknum[i];
+        }
+        var num2 = sum % 11;
+        var result = 11 - num2;
+
+
+        	if(result == jumin.charAt(12)-'0') {
+
+
+        	  alert("운전면허증 확인 완료되었습니다.");
+
+           document.getElementById("license").disabled = true;
+           document.getElementById("licInfo_btn").disabled = true;
+           document.getElementById("jumin_btn").disabled = true;
+
+
+        		}else {
+
+        		alert("유효하지 않은 운전면허증입니다. 회원가입을 하실 수 없습니다.");
+        		window.history.back();
+
+        		}
+       }
+ }
+
+
+
   function idCheck(id){
 	  if(id==''){
 		  alert("아이디를 입력하세요");
@@ -58,14 +92,14 @@
 	  }else{
 		  var url = "idcheck";
 		  var param = "id="+id;
-		  
+
 		  $.get(url, param, function(data, textStatus) {
 
 			  $("#idcheck").text(data.str);
 		  })
 	  }
-  } 
-  
+  }
+
   function emailCheck(email){
 	  if(email==''){
 		  alert("email를 입력하세요");
@@ -73,27 +107,82 @@
 	  }else{
 		  var url = "emailcheck";
 		  url += "?email="+email;
-		  
+
 		  $.get(url, function(data, textStatus) {
-			  
+
 			  $("#emailcheck").text(data.str);
-		  	
+
 		  })
 	  }
   }
-</script>
-    <script>
+
         $(document).ready(function(){
             var idcheck_clicked = 0;
         $("#idcheck_btn").click(function(){ idcheck_clicked++ });
         $("#submit").click(function(){
             if (idcheck_clicked <= 0){
-                alert('중복확인 버튼을 먼저 클릭 하세요!'); 
+                alert('중복확인 버튼을 먼저 클릭 하세요!');
                 return false;
             }
         });
     });
+
+    function inCheck(f){
+    	if(f.id.value.length==0){
+    		alert("아이디를 입력하세요");
+    		f.id.focus();
+    		return false;
+    	}
+    	if(f.passwd.value.length==0){
+    		alert("비밀번호를 입력하세요");
+    		f.passwd.focus();
+    		return false;
+    	}
+    	if(f.repasswd.value.length==0){
+    		alert("비밀번호 확인을 입력하세요");
+    		f.repasswd.focus();
+    		return false;
+    	}
+    	if(f.passwd.value != f.repasswd.value){
+    		alert("비밀번호가 일치하지 않습니다.");
+    		f.passwd.value="";
+    		f.repasswd.value="";
+    		f.passwd.focus();
+    		return false;
+    	}
+
+    	if(f.mname.value.length==0){
+    		alert("이름을 입력하세요");
+    		f.mname.focus();
+    		return false;
+    	}
+
+    	if(f.fnameMF.value.length==0){
+    		alert("운전면허증 사진을 업로드 해주세요.");
+    		f.fnameMF.focus();
+    		return false;
+    	}
+    	if(f.license.value.length==0){
+    		alert("운전면허번호를 입력하세요");
+    		f.license.focus();
+    		return false;
+    	}
+    	if(f.phone.value.length==0){
+    		alert("전화번호를 입력하세요");
+    		f.phone.focus();
+    		return false;
+    	}
+    	if(f.email.value.length==0){
+    		alert("이메일을 입력하세요");
+    		f.email.focus();
+    		return false;
+    	}
+
+
+    }
+
     </script>
+
   <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
   <script>
     function sample6_execDaumPostcode() {
@@ -130,7 +219,7 @@
                     }
                     // 조합된 참고항목을 해당 필드에 넣는다.
                     //document.getElementById("sample6_extraAddress").value = extraAddr;
-                
+
                 } else {
                     //document.getElementById("sample6_extraAddress").value = '';
                 }
@@ -144,64 +233,6 @@
         }).open();
     }
 </script>
-<script type="text/javascript">
-
-function inCheck(f){
-	if(f.id.value.length==0){
-		alert("아이디를 입력하세요");
-		f.id.focus();
-		return false;
-	}
-	if(f.passwd.value.length==0){
-		alert("비밀번호를 입력하세요");
-		f.passwd.focus();
-		return false;
-	}
-	if(f.repasswd.value.length==0){
-		alert("비밀번호 확인을 입력하세요");
-		f.repasswd.focus();
-		return false;
-	}
-	if(f.passwd.value != f.repasswd.value){
-		alert("비밀번호가 일치하지 않습니다.");
-		f.passwd.value="";
-		f.repasswd.value="";
-		f.passwd.focus();
-		return false;
-	}
-	
-	if(f.mname.value.length==0){
-		alert("이름을 입력하세요");
-		f.mname.focus();
-		return false;
-	}
-	
-	if(f.fnameMF.value.length==0){
-		alert("운전면허증 사진을 업로드 해주세요.");
-		f.fnameMF.focus();
-		return false;
-	}
-	if(f.license.value.length==0){
-		alert("운전면허번호를 입력하세요");
-		f.license.focus();
-		return false;
-	}
-	if(f.phone.value.length==0){
-		alert("전화번호를 입력하세요");
-		f.phone.focus();
-		return false;
-	}
-	if(f.email.value.length==0){
-		alert("이메일을 입력하세요");
-		f.email.focus();
-		return false;
-	}
-
-		    
-}
-		  
-
-</script>
 </head>
 <body>
 
@@ -212,25 +243,26 @@ function inCheck(f){
        <p style="font-size:20px;">( <span id="need">*</span> 필수입력사항)</p><br><br>
      </div>
 
-  <form class="form-horizontal" 
+  <form class="form-horizontal"
         action="create"
         method="post"
         name = 'frm'
         onsubmit="return inCheck(this)"
         >
-        
+
 <!--  주민번호 ocr한 값 -->
-    <input type="hidden" name="jumin" id="jumin" value="">
+<!--     <input type="hidden" name="jumin" id="jumin" value=""> -->
 
 	<div class="info">
       <label class="control-label col-sm-2" for="id"><span id="need">*</span>아이디</label>
-      <div class="col-sm-3">
+      <div>
         <input type="text" class="form-control" id="id" placeholder="아이디를 입력하세요"
         name="id">
-      </div>
+
         <button type="button" class="cre_btn" id="idcheck_btn"
                 onclick="idCheck(document.frm.id.value)">아이디 중복확인</button>
-      <div id="idcheck"></div>
+                 <label id="idcheck"></label>
+      </div>
     </div>
 
 	<div class="info">
@@ -244,64 +276,75 @@ function inCheck(f){
       <label class="control-label col-sm-2" for="repasswd"><span id="need">*</span>비밀번호 확인</label>
       <div class="col-sm-4">
         <input type="password" class="form-control" id="repasswd"
-        placeholder="Enter repasswd"  name="repasswd">
+        placeholder="확인을 위해 한 번 더 입력해 주세요."  name="repasswd">
       </div>
     </div>
-	<div class="info">
-      <label class="control-label col-sm-2" for="fnameMF"><span id="need">*</span>운전면허증 사진</label>
-      <div class="col-sm-4">
-        <input type="file" class="form-control" id="fnameMF"
-        name="fnameMF" accept=".jpg,.gif,.png">
-        <label>* 1MB이하의 파일만 업로드 해주세요. </label>
-      </div>
-        <input type="text" class="form-control" id="jumin" name="jumin"> 주민등록 출력 확인
-      <button type="button" class="btn btn-primary-outline" onclick="licInfo(document.frm.fnameMF.value)">운전면허증 확인</button>
-    </div>
-	<div class="info">
-      <label class="control-label col-sm-2" for="license"><span id="need">*</span>운전면허번호</label>
-      <div class="col-sm-4">
-        <input type="text" class="form-control" id="license"
-        placeholder="Enter license"  name="license">
-      </div>
-    </div>
-	<div class="info">
+
+    	<div class="info">
       <label class="control-label col-sm-2" for="mname"><span id="need">*</span>이름</label>
       <div class="col-sm-4">
         <input type="text" class="form-control" id="mname"
-        placeholder="Enter 이름"  name="mname">
+        placeholder="이름을 입력하세요."  name="mname">
       </div>
     </div>
 	<div class="info">
       <label class="control-label col-sm-2" for="phone"><span id="need">*</span>전화번호</label>
       <div class="col-sm-4">
         <input type="text" class="form-control" id="phone"
-        placeholder="Enter 전화번호"  name="phone">
+        placeholder="전화번호를 입력하세요."  name="phone">
       </div>
     </div>
+
+	<div class="info">
+      <label class="control-label col-sm-2" for="fnameMF"><span id="need">*</span>운전면허증 사진</label>
+      <div class="col-sm-4">
+        <input type="file" class="form-control" id="fnameMF"
+        name="fnameMF" accept=".jpg,.gif,.png">
+     <button type="button" class="cre_btn" id="licInfo_btn" onclick="licInfo(document.frm.fnameMF.value)">운전면허증 확인</button>
+        <label id="need">* 1MB이하의 파일만 업로드 해주세요. </label><br>
+      </div>
+    </div>
+
+	<div class="info">
+      <label class="control-label col-sm-2" for="license"><span id="need">*</span>운전면허번호</label>
+      <div class="col-sm-4">
+        <input type="text" class="form-control" id="license" name="license">
+         <button type="button" class="cre_btn" id="jumin_btn" onclick="juminCheck(document.frm.jumin.value)">면허번호 확인</button>
+          <label id="jumincheck"></label>
+      </div>
+    </div>
+
+    	<div class="info">
+      <label class="control-label col-sm-2" for="jumin"><span id="need">*</span>주민등록 출력 확인</label>
+      <div class="col-sm-4">
+        <input type="text" class="form-control" id="jumin" name="jumin">
+      </div>
+    </div>
+
+
 	<div class="info">
       <label class="control-label col-sm-2" for="email"><span id="need">*</span>이메일</label>
       <div class="col-sm-3">
         <input type="email" class="form-control" id="email"
         placeholder="Enter email"  name="email">
-      </div>
-
-      <button type="button" class="btn btn-default col-sm-2"
+        <button type="button" class="cre_btn"
       onclick="emailCheck(document.frm.email.value)">이메일 중복확인</button>
       <div id="emailcheck"></div>
-
+      </div>
     </div>
+
 	<div class="info">
-      <label class="control-label col-sm-2" for="sample6_postcode">우편번호</label>
-      <div class="col-sm-1">
+      <label class="control-label col-sm-2" for="sample6_postcode">- 우편번호</label>
+
+      <button type="button" class="cre_btn2"
+      onclick="sample6_execDaumPostcode()">주소 검색</button>
+      <div class="col-sm-1"><br>
         <input type="text" class="form-control"
          name="zipcode" id="sample6_postcode" placeholder="우편번호">
       </div>
-
-      <button type="button" class="btn btn-default col-sm-2"
-      onclick="sample6_execDaumPostcode()">주소 검색</button>
     </div>
 	<div class="info">
-      <label class="control-label col-sm-2" for="sample6_address">주소</label>
+      <label class="control-label col-sm-2" for="sample6_address">- 주소</label><br>
       <div class="col-sm-6">
         <input type="text" class="form-control" id="sample6_address" placeholder="주소"
          name="address1">

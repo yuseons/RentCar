@@ -140,8 +140,8 @@ public class LoginController {
       String lic1 = sb.substring(hypLic - 2); // 맨처음 하이픈 앞의 두글자부터 추출 시작 //loginDTO엔 license로 저장되어있음
       // System.out.println(lic1);
 
-      String lic = lic1.substring(0, 16);
-      System.out.println("면허번호: " + lic);
+      String licence = lic1.substring(0, 16);
+     // System.out.println("면허번호: " + lic);
 
       // ---- 운전면허증 사진에서 주민등록번호를 추출하기
       int hypJum = sb.lastIndexOf("-"); // 마지막 -의 위치번호 //hypenJ : 주민번호에 있는 하이픈
@@ -150,9 +150,9 @@ public class LoginController {
       // System.out.println(jumin1);
 
       String jumin = jumin1.substring(0, 15); // 주민등록번호추출 (- 포함)
-      System.out.println("주민등록번호: " + jumin);
+     // System.out.println("주민등록번호: " + jumin);
 
-      map.put("lic", lic);
+      map.put("licence", licence);
       map.put("jumin", jumin);
 
     } catch (Exception e) {

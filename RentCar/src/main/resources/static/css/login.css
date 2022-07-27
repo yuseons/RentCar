@@ -128,15 +128,15 @@ padding:20px;
     }
 
 .createbox{
-    width: 780px;
+    width: 1000px;
     height: 550px;
     margin: 0 auto; /* 블록요소를 부모영역에서 가운데 처리 */
 }
 
 .createbox label{
     display: block;
-    font-size: 12px; color: #333;
-    margin-bottom: 10px; /* 동위선택자와의 간격 조정 */
+    font-size: 15px;
+    margin-bottom: 10px;
 }
 .createbox input{
     margin-bottom: 25px; /* 동위선택자와의 간격 조정 */
@@ -146,20 +146,31 @@ padding:20px;
     box-sizing: border-box; /* 패딩수치를 인사이드 처리 */
 }
 .createbox .info input{
-	    width: 500px;
-	    height: 20px;
+	    width: 300px;
+	    height: 40px;
 }
 .cre_btn {
-        display:block;
-        width:200px;
-        height:20px;
-
-        border:1px #008299 solid;
-        background-color:#C6FFFF;
-
-        color:#000000;
-
+        width:150px;
+        height:30px;
+        border:1px #3DB7CC solid;
+        background-color:#FFFFFF;
+        color:#3DB7CC;
 }
     .cre_btn:hover{
-    color:#0100FF;
+    color:#000000;
+    }
+
+  .cre_btn[disabled]{
+      opacity: 0.4;
+      cursor: default;
+      pointer-events: none;
+      color:red;
+    }
+
+    .cre_btn2{
+         width:150px;
+        height:30px;
+        border:1px #A6A6A6 solid;
+        background-color:#FFFFFF;
+        color:#A6A6A6;
     }
