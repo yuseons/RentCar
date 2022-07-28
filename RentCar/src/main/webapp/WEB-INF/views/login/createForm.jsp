@@ -42,7 +42,8 @@
 	  licOcr(formData)
 	  .then(result => {
 
-		  document.querySelector('#license').value = result.licence.trim();
+		  document.querySelector('#license1').value = result.license.trim();
+		  document.querySelector('#license2').value = result.license.trim();
 		  document.querySelector('#jumin').value = result.jumin.replace("-","").trim();
 
 	  });
@@ -66,10 +67,9 @@
 
         	if(result == jumin.charAt(12)-'0') {
 
-
         	  alert("운전면허증 확인 완료되었습니다.");
 
-           document.getElementById("license").disabled = true;
+           document.getElementById("license2").disabled = true;
            document.getElementById("licInfo_btn").disabled = true;
            document.getElementById("jumin_btn").disabled = true;
 
@@ -77,7 +77,7 @@
         		}else {
 
         		alert("유효하지 않은 운전면허증입니다. 회원가입을 하실 수 없습니다.");
-        		window.history.back();
+        		location.reload(true);
 
         		}
        }
@@ -157,11 +157,7 @@
     		return false;
     	}
 
-    	if(f.fnameMF.value.length==0){
-    		alert("운전면허증 사진을 업로드 해주세요.");
-    		f.fnameMF.focus();
-    		return false;
-    	}
+
     	if(f.license.value.length==0){
     		alert("운전면허번호를 입력하세요");
     		f.license.focus();
@@ -251,7 +247,8 @@
         >
 
 <!--  주민번호 ocr한 값 -->
-<!--     <input type="hidden" name="jumin" id="jumin" value=""> -->
+    <input type="hidden" name="jumin" id="jumin"  value="">
+    <input type="hidden" name="license" id="license1"  value="">
 
 	<div class="info">
       <label class="control-label col-sm-2" for="id"><span id="need">*</span>아이디</label>
@@ -261,7 +258,7 @@
 
         <button type="button" class="cre_btn" id="idcheck_btn"
                 onclick="idCheck(document.frm.id.value)">아이디 중복확인</button>
-                 <label id="idcheck"></label>
+                 <label id="idcheck"></label><br>
       </div>
     </div>
 
@@ -276,7 +273,7 @@
       <label class="control-label col-sm-2" for="repasswd"><span id="need">*</span>비밀번호 확인</label>
       <div class="col-sm-4">
         <input type="password" class="form-control" id="repasswd"
-        placeholder="확인을 위해 한 번 더 입력해 주세요."  name="repasswd">
+        placeholder="확인을 위해 한 번 더 입력해 주세요."  name="repasswd"><br>
       </div>
     </div>
 
@@ -291,7 +288,7 @@
       <label class="control-label col-sm-2" for="phone"><span id="need">*</span>전화번호</label>
       <div class="col-sm-4">
         <input type="text" class="form-control" id="phone"
-        placeholder="전화번호를 입력하세요."  name="phone">
+        placeholder="전화번호를 입력하세요."  name="phone"><br>
       </div>
     </div>
 
@@ -299,7 +296,7 @@
       <label class="control-label col-sm-2" for="fnameMF"><span id="need">*</span>운전면허증 사진</label>
       <div class="col-sm-4">
         <input type="file" class="form-control" id="fnameMF"
-        name="fnameMF" accept=".jpg,.gif,.png">
+         accept=".jpg,.gif,.png">
      <button type="button" class="cre_btn" id="licInfo_btn" onclick="licInfo(document.frm.fnameMF.value)">운전면허증 확인</button>
         <label id="need">* 1MB이하의 파일만 업로드 해주세요. </label><br>
       </div>
@@ -308,19 +305,11 @@
 	<div class="info">
       <label class="control-label col-sm-2" for="license"><span id="need">*</span>운전면허번호</label>
       <div class="col-sm-4">
-        <input type="text" class="form-control" id="license" name="license">
+        <input type="text" class="form-control" id="license2" >
          <button type="button" class="cre_btn" id="jumin_btn" onclick="juminCheck(document.frm.jumin.value)">면허번호 확인</button>
           <label id="jumincheck"></label>
       </div>
     </div>
-
-    	<div class="info">
-      <label class="control-label col-sm-2" for="jumin"><span id="need">*</span>주민등록 출력 확인</label>
-      <div class="col-sm-4">
-        <input type="text" class="form-control" id="jumin" name="jumin">
-      </div>
-    </div>
-
 
 	<div class="info">
       <label class="control-label col-sm-2" for="email"><span id="need">*</span>이메일</label>
@@ -329,7 +318,7 @@
         placeholder="Enter email"  name="email">
         <button type="button" class="cre_btn"
       onclick="emailCheck(document.frm.email.value)">이메일 중복확인</button>
-      <div id="emailcheck"></div>
+      <div id="emailcheck"></div><br>
       </div>
     </div>
 
@@ -344,7 +333,7 @@
       </div>
     </div>
 	<div class="info">
-      <label class="control-label col-sm-2" for="sample6_address">- 주소</label><br>
+      <label class="control-label col-sm-2" for="sample6_address"> 주소</label><br>
       <div class="col-sm-6">
         <input type="text" class="form-control" id="sample6_address" placeholder="주소"
          name="address1">

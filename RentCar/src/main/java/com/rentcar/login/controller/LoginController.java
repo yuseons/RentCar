@@ -140,7 +140,7 @@ public class LoginController {
       String lic1 = sb.substring(hypLic - 2); // 맨처음 하이픈 앞의 두글자부터 추출 시작 //loginDTO엔 license로 저장되어있음
       // System.out.println(lic1);
 
-      String licence = lic1.substring(0, 16);
+      String license = lic1.substring(0, 16);
      // System.out.println("면허번호: " + lic);
 
       // ---- 운전면허증 사진에서 주민등록번호를 추출하기
@@ -152,7 +152,7 @@ public class LoginController {
       String jumin = jumin1.substring(0, 15); // 주민등록번호추출 (- 포함)
      // System.out.println("주민등록번호: " + jumin);
 
-      map.put("licence", licence);
+      map.put("license", license);
       map.put("jumin", jumin);
 
     } catch (Exception e) {
@@ -185,17 +185,8 @@ public class LoginController {
   @PostMapping("/user/create")
   public String create(LoginDTO dto, HttpServletRequest request) throws IOException {
 
-    String upDir = UploadLicense.getUploadDir();
-    String fname = Utility.saveFileSpring(dto.getFnameMF(), upDir);
-
-    int size = (int) dto.getFnameMF().getSize();
-    if (size > 0) {
-      dto.setFname(fname);
-    } else {
-      return "error";
-    }
-
-    if (service.create(dto) > 0) {
+    log.info("dto: "+dto);
+      if (service.create(dto) > 0) {
       return "redirect:/";
     } else {
       return "error";

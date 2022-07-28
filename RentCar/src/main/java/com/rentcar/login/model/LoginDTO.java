@@ -12,10 +12,11 @@ public class LoginDTO {
   private String phone;
   private String email;
   private String license;
+  private String jumin;
   private String grade;
   private String point;
   private String fname;
-  private MultipartFile fnameMF;
+  //private MultipartFile fnameMF;
   private String zipcode;
   private String address1;
   private String address2;
