@@ -14,6 +14,14 @@
   		color:red;
   		font-size:13px;
   	}
+  	#need2{
+  	        font-size:14px;
+  	        display: block;
+            width: 410px;
+            border-bottom: 3px solid #3DB7CC;
+            margin: 20px 0px;
+            color:#003399;
+  	}
 
 	#idcheck,#emailcheck{
 		color : red;
@@ -121,7 +129,7 @@
         $("#idcheck_btn").click(function(){ idcheck_clicked++ });
         $("#submit").click(function(){
             if (idcheck_clicked <= 0){
-                alert('중복확인 버튼을 먼저 클릭 하세요!');
+                alert('아이디 중복 확인 버튼을 클릭해 주세요');
                 return false;
             }
         });
@@ -157,9 +165,14 @@
     		return false;
     	}
 
+    	if(f.fnameMF.value.length==0){
+    		alert("운전면허증 사진을 업로드 해주세요.");
+    		f.fnameMF.focus();
+    		return false;
+    	}
 
     	if(f.license.value.length==0){
-    		alert("운전면허번호를 입력하세요");
+    		alert("확인버튼을 눌러주세요");
     		f.license.focus();
     		return false;
     	}
@@ -246,7 +259,7 @@
         onsubmit="return inCheck(this)"
         >
 
-<!--  주민번호 ocr한 값 -->
+<!--  주민등록번호 ocr한 값 -->
     <input type="hidden" name="jumin" id="jumin"  value="">
     <input type="hidden" name="license" id="license1"  value="">
 
@@ -257,7 +270,7 @@
         name="id">
 
         <button type="button" class="cre_btn" id="idcheck_btn"
-                onclick="idCheck(document.frm.id.value)">아이디 중복확인</button>
+                onclick="idCheck(document.frm.id.value)">아이디 중복 확인</button>
                  <label id="idcheck"></label><br>
       </div>
     </div>
@@ -278,14 +291,14 @@
     </div>
 
     	<div class="info">
-      <label class="control-label col-sm-2" for="mname"><span id="need">*</span>이름</label>
+      <br><label class="control-label col-sm-2" for="mname"><span id="need">*</span>이름</label>
       <div class="col-sm-4">
         <input type="text" class="form-control" id="mname"
         placeholder="이름을 입력하세요."  name="mname">
       </div>
     </div>
 	<div class="info">
-      <label class="control-label col-sm-2" for="phone"><span id="need">*</span>전화번호</label>
+      <br><label class="control-label col-sm-2" for="phone"><span id="need">*</span>전화번호</label>
       <div class="col-sm-4">
         <input type="text" class="form-control" id="phone"
         placeholder="전화번호를 입력하세요."  name="phone"><br>
@@ -293,19 +306,21 @@
     </div>
 
 	<div class="info">
-      <label class="control-label col-sm-2" for="fnameMF"><span id="need">*</span>운전면허증 사진</label>
+      <br><label class="control-label col-sm-2" for="fnameMF"><span id="need">*</span>운전면허증 사진</label>
+      <label id="need2">* 파일을 선택하신 후 확인 버튼을 눌러주세요. * </label><br>
       <div class="col-sm-4">
         <input type="file" class="form-control" id="fnameMF"
          accept=".jpg,.gif,.png">
-     <button type="button" class="cre_btn" id="licInfo_btn" onclick="licInfo(document.frm.fnameMF.value)">운전면허증 확인</button>
-        <label id="need">* 1MB이하의 파일만 업로드 해주세요. </label><br>
+     <button type="button" class="cre_btn" id="licInfo_btn" onclick="licInfo(document.frm.fnameMF.value)">확인</button>
+        <label id="need">* 1MB이하의 파일만 업로드 해주세요. </label><br><br>
       </div>
     </div>
 
 	<div class="info">
       <label class="control-label col-sm-2" for="license"><span id="need">*</span>운전면허번호</label>
+            <label id="need2">* 입력된 면허번호가 일치하면 면허번호 확인 버튼을 눌러주세요 * </label><br>
       <div class="col-sm-4">
-        <input type="text" class="form-control" id="license2" >
+        <input type="text" class="form-control" id="license2" >ㅌ
          <button type="button" class="cre_btn" id="jumin_btn" onclick="juminCheck(document.frm.jumin.value)">면허번호 확인</button>
           <label id="jumincheck"></label>
       </div>
@@ -317,7 +332,7 @@
         <input type="email" class="form-control" id="email"
         placeholder="Enter email"  name="email">
         <button type="button" class="cre_btn"
-      onclick="emailCheck(document.frm.email.value)">이메일 중복확인</button>
+      onclick="emailCheck(document.frm.email.value)">이메일 중복 확인</button>
       <div id="emailcheck"></div><br>
       </div>
     </div>

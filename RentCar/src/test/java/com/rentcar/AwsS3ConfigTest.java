@@ -1,4 +1,4 @@
-package com.rentcar.car.kakaoservice;
+package com.rentcar;
 
 import com.amazonaws.SdkClientException;
 import com.amazonaws.auth.AWSStaticCredentialsProvider;
