@@ -139,11 +139,11 @@ padding:20px;
     margin-bottom: 10px;
 }
 .createbox input{
-    margin-bottom: 25px; /* 동위선택자와의 간격 조정 */
+    margin-bottom: 25px;
     border: none;
     background-color:#F8FFFF;
-    padding: 0 20px; /* 앞상하 뒷좌우 */
-    box-sizing: border-box; /* 패딩수치를 인사이드 처리 */
+    padding: 0 20px;
+    box-sizing: border-box;
 }
 .createbox .info input{
 	    width: 300px;

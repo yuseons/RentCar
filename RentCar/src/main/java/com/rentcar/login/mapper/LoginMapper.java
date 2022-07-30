@@ -20,4 +20,7 @@ public interface LoginMapper {
 
   String pwFind(Map<String, String> map);
 
+  LoginDTO read(String id);
+
+  int update(LoginDTO dto);
 }

@@ -18,9 +18,9 @@
   	        font-size:14px;
   	        display: block;
             width: 410px;
-            border-bottom: 3px solid #3DB7CC;
             margin: 20px 0px;
             color:#003399;
+            text-decoration: #3DB7CC wavy underline;
   	}
 
 	#idcheck,#emailcheck{
@@ -268,7 +268,6 @@
       <div>
         <input type="text" class="form-control" id="id" placeholder="아이디를 입력하세요"
         name="id">
-
         <button type="button" class="cre_btn" id="idcheck_btn"
                 onclick="idCheck(document.frm.id.value)">아이디 중복 확인</button>
                  <label id="idcheck"></label><br>
@@ -298,7 +297,7 @@
       </div>
     </div>
 	<div class="info">
-      <br><label class="control-label col-sm-2" for="phone"><span id="need">*</span>전화번호</label>
+      <br><label class="control-label col-sm-2" for="phone"><span id="need">*</span>핸드폰 번호</label>
       <div class="col-sm-4">
         <input type="text" class="form-control" id="phone"
         placeholder="전화번호를 입력하세요."  name="phone"><br>
@@ -320,7 +319,7 @@
       <label class="control-label col-sm-2" for="license"><span id="need">*</span>운전면허번호</label>
             <label id="need2">* 입력된 면허번호가 일치하면 면허번호 확인 버튼을 눌러주세요 * </label><br>
       <div class="col-sm-4">
-        <input type="text" class="form-control" id="license2" >ㅌ
+        <input type="text" class="form-control" id="license2" >
          <button type="button" class="cre_btn" id="jumin_btn" onclick="juminCheck(document.frm.jumin.value)">면허번호 확인</button>
           <label id="jumincheck"></label>
       </div>

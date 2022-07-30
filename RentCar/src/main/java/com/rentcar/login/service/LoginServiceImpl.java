@@ -56,6 +56,15 @@ public class LoginServiceImpl implements LoginService {
     return mapper.pwFind(map);
   }
 
+  @Override
+  public LoginDTO read(String id) {
+    return mapper.read(id);
+  }
 
-  
+  @Override
+  public int update(LoginDTO dto) {
+    return mapper.update(dto);
+  }
+
+
 }
