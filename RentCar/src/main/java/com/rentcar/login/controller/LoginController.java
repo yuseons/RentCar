@@ -46,6 +46,11 @@ public class LoginController {
   private LoginService service;
 
 
+  @GetMapping("/user/delete")
+  public String delete(){
+
+    return "/user/delete";
+  }
 
 @PostMapping("/user/update")
   public String update(LoginDTO dto, Model model, RedirectAttributes ra){

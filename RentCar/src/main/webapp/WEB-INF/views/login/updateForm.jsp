@@ -26,12 +26,6 @@
   </style>
   <script type="text/javascript">
 
-  function deleteU(){
-	  var url = "delete";
-	  url += "?id=${dto.id}";
-
-	  location.href = url;
-  }
 
   function emailCheck(email){
 	  //alert(email);
@@ -193,7 +187,7 @@ function inCheck(f){
       </div>
       <div>
       <br><br><br>
- <button class="btn btn-default" onclick="deleteU()">회원탈퇴</button>
+ <button class="btn btn-default" onclick="/user/delete">회원탈퇴</button>
       </div>
     </form>
 
