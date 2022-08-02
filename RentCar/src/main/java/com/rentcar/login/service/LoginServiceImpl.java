@@ -66,5 +66,10 @@ public class LoginServiceImpl implements LoginService {
     return mapper.update(dto);
   }
 
+  @Override
+  public void delete(LoginDTO dto) {
+    mapper.delete(dto);
+  }
+
 
 }

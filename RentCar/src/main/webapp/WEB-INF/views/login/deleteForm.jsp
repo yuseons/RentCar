@@ -1,41 +1,57 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
-  <title>로그인</title>
+  <title>회원탈퇴</title>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="/css/login.css">
   <meta charset="utf-8">
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<link rel="stylesheet" href="/css/login.css">
+	<script type="text/javascript">
 
-  </head>
-  <body>
+			$("#submit").on("click", function(){
+				if($("#passwd").val()==""){
+					alert("비밀번호를 입력해주세요.");
+					$("#passwd").focus();
+					return false;
+				}
+			});
+		})
+	</script>
+	<body>
+		<div class="createbox">
+		    <div class="form-block">
 
-    <div class="loginbox">
-    <form class="form-horizontal"
-          action="/user/delete"
-          method="post"
-          >
+			<form
+			    action="/user/delete"
+			    method="post">
 
-       <input type="hidden" name="id" value="${dto.id}">
-
-    <div class="form-group">
-      <label class="control-label col-sm-2" for="passwd">비밀번호</label>
-      <div class="col-sm-6">
-        <input type="password" name="passwd" id="passwd" class="form-control">
-      </div>
-    </div>
-
-    <p id="red" class="col-sm-offset-2 col-sm-6">삭제하면 복구할 수 없습니다.</p>
-
-     <div class="form-group">
-     <div class="col-sm-offset-2 col-sm-5">
-      <button class="btn">삭제</button>
-      <button type="reset" class="btn">취소</button>
-     </div>
-   </div>
-   </form>
-</div>
-  </body>
+				<div class="info_2">
+					<label class="control-label" for="id">아이디</label>
+					<input class="form-control" type="text" id="id" name="id" value="${user.id}" readonly="readonly"/>
+				</div>
+				<div class="info_2">
+               		<label class="control-label" for="userName">이름</label>
+               		<input class="form-control" type="text" id="mname" name="mname" value="${user.mname}" readonly="readonly"/>
+               	</div>
+				<div class="info">
+					<label class="control-label" for="passwd">비밀번호</label>
+					<input class="form-control" type="password" id="passwd" name="passwd" />
+				</div>
+				<div align="center">
+				<br><br>
+					<button class="agreebtn" >회원탈퇴</button><br>
+                    <button class="btn_2" onclick="history.back()">취소</button>
+				</div>
+			</form>
+			<div>
+				<c:if test="${msg == false}">
+					비밀번호가 맞지 않습니다.
+				</c:if>
+			</div>
+			</div>
+		</div>
+	</body>
 </html>

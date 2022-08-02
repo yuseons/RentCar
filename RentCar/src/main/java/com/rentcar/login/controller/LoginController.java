@@ -46,6 +46,31 @@ public class LoginController {
   private LoginService service;
 
 
+  @PostMapping("/user/delete")
+  public String delete(LoginDTO dto, HttpSession session, RedirectAttributes ra){
+
+    // 세션에 있는 user를 가져와 user 변수에 넣음
+    LoginDTO user = (LoginDTO) session.getAttribute("user");
+
+    // 세션에있는 비밀번호
+    String sessionPwd = user.getPasswd();
+
+    // dto로 들어오는 비밀번호
+    String dtoPwd = dto.getPasswd();
+
+    if(!(sessionPwd.equals(dtoPwd))) {
+      ra.addFlashAttribute("msg", false);
+      return "redirect:/user/delete";
+    }
+    service.delete(dto);
+
+    session.invalidate();
+
+    return "redirect:/";
+
+
+  }
+
   @GetMapping("/user/delete")
   public String delete(){
 

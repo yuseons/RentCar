@@ -357,10 +357,10 @@
     </div>
 
     <div>
-      <div class="col-sm-offset-2 col-sm-5">
-      <br><br>
-        <button type="submit" class="agreebtn">등록</button>
-        <button type="reset" class="btn_2" style="float:right;" onclick="history.back()">취소</button>
+      <div align="center">
+      <br><br><br>
+        <button type="submit" class="agreebtn">등록</button><br>
+        <button class="btn_2" onclick="history.back()">취소</button>
       </div>
     </div>
 

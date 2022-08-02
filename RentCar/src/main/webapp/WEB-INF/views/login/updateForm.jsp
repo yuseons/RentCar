@@ -123,19 +123,19 @@ function inCheck(f){
           >
        <input type="hidden" name="id" value="${dto.id}">
 
-      <div class="info">
+      <div class="info_2">
         <label class="control-label col-sm-2" for="id">아이디</label>
         <div class="col-sm-3">
         <input type="text" class="form-control" id="id" value="${dto.id}" readonly>
         </div>
       </div>
-      <div class="info">
+      <div class="info_2">
         <label class="control-label col-sm-2" for="mname">이름</label>
         <div class="col-sm-4">
         <input type="text" class="form-control" id="mname" value="${dto.mname}" readonly>
         </div>
       </div>
-      	<div class="info">
+      	<div class="info_2">
             <label class="control-label col-sm-2" for="license">운전면허번호</label>
             <div>
               <input type="text" class="form-control" id="license" value="${dto.license}" name="license" readonly>
@@ -183,11 +183,11 @@ function inCheck(f){
       <div align="center">
       <br><br>
           <button type="submit" class="agreebtn">수정</button><br>
-          <button type="reset" class="btn_2">취소</button>
+          <button class="btn_2" onclick="history.back()">취소</button>
       </div>
       <div>
       <br><br><br>
- <button class="btn btn-default" onclick="/user/delete">회원탈퇴</button>
+           <button class="btn_2" onclick="location.href='/user/delete'">회원탈퇴</button>
       </div>
     </form>
 

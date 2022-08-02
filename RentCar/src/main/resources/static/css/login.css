@@ -138,14 +138,21 @@ padding:20px;
     font-size: 15px;
     margin-bottom: 10px;
 }
-.createbox input{
+.createbox .info input{
     margin-bottom: 25px;
     border: none;
-    background-color:#F8FFFF;
     padding: 0 20px;
     box-sizing: border-box;
+    background-color:#F8FFFF;
+	    width: 300px;
+	    height: 40px;
 }
-.createbox .info input{
+.createbox .info_2 input{
+    margin-bottom: 25px;
+    border: none;
+    padding: 0 20px;
+    box-sizing: border-box;
+    background-color:#E7E7E7;
 	    width: 300px;
 	    height: 40px;
 }

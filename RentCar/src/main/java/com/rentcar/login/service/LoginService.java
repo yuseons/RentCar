@@ -23,4 +23,6 @@ public interface LoginService {
     LoginDTO read(String id);
 
     int update(LoginDTO dto);
+
+    void delete(LoginDTO dto);
 }
