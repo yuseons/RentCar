@@ -1,5 +1,6 @@
 package com.rentcar.login.service;
 
+import java.util.List;
 import java.util.Map;
 
 import com.rentcar.login.mapper.LoginMapper;
@@ -69,6 +70,16 @@ public class LoginServiceImpl implements LoginService {
   @Override
   public void delete(LoginDTO dto) {
     mapper.delete(dto);
+  }
+
+  @Override
+  public int total(Map map) {
+    return mapper.total(map);
+  }
+
+  @Override
+  public List<LoginDTO> list(Map map) {
+    return mapper.list(map);
   }
 
 

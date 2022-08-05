@@ -5,35 +5,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>회원정보</title>
+  <title>회원 정보</title>
   <meta charset="utf-8">
-  <script type="text/javascript">
-  function updateM(){
-	  var url = "update";
-// 	  url += "?id=${dto.id}";
-	  
-	  location.href = url;
-  }
-  
-  function updatePw(){
-	  var url = "updatePwForm";
-	  url += "?id=${dto.id}";
-	  
-	  location.href = url;
-  }
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="/css/login.css">
+     <style>
+                table {
+                  width: 100%;
+                  border-top: 1px solid #B2CCFF;
+                  border-collapse: collapse;
+                }
+                  th, td {
+                    border-bottom: 1px solid #B2CCFF;
+                    padding: 10px;
+        }
+          tbody tr:nth-child(1) {
+            background-color: #e3f2fd;
+          }
+     </style>
+     <script>
+     	function del(id) {
+     		if(confirm("정말 삭제하시겠습니까?")){
+     		let url = "delete/" + id;
+     		location.href = url;
+     		}
+     </script>
 
-  function deleteM(){
-	  var url = "delete";
-	  url += "?id=${dto.id}";
-	  url += "&oldfile=${dto.fname}";
-	  location.href = url;
-  }
-  </script>
 </head>
 <body>
-<div class="container">
+   <div class="form-block">
 
-<h2 class="col-sm-offset-2 col-sm-10">${dto.mname}의 회원정보</h2>
+<h2 align="center">${dto.mname} 님의 정보</h2><br><br><br>
  <table class="table table-bordered">
 
  <tr>
@@ -41,13 +43,17 @@
  	<td>${dto.id}</td>
  </tr>
  <tr>
- 	<th>성명</th>
+ 	<th>이름</th>
  	<td>${dto.mname}</td>
  </tr>
  <tr>
- 	<th>전화번호</th>
+ 	<th>핸드폰 번호</th>
  	<td>${dto.phone}</td>
  </tr>
+  <tr>
+  	<th>운전면허번호</th>
+  	<td>${dto.license}</td>
+  </tr>
  <tr>
  	<th>이메일</th>
  	<td>${dto.email}</td>
@@ -69,15 +75,14 @@
  
  </table>
  <div style="text-align: center">
- <button class="btn btn-default" onclick="updateM()">정보수정</button>
- <c:if test="${not empty sessionScope.id and sessionScope.grade != 'A'}">
- <button class="btn btn-default" onclick="updateFile()">사진수정</button>
- <button class="btn btn-default" onclick="updatePw()">패스워드변경</button>
- </c:if>
- <button class="btn btn-default" onclick="deleteM()">회원탈퇴</button>
- <c:if test="${not empty sessionScope.id and sessionScope.grade == 'A'}">
- <button class="btn btn-default" onclick="location.href='list'">회원목록</button>
- </c:if>
+ <br> <br> <br> <br>
+ <button class="cre_btn" onclick="location.href='/user/update'">정보 수정</button>&nbsp;&nbsp;&nbsp;&nbsp;
+ <button class="cre_btn" onclick="">비밀번호 변경</button>&nbsp;&nbsp;&nbsp;&nbsp;
+ <button class="cre_btn" onclick="del(document.frm.id.value)">회원 삭제</button>
+ <div>
+  <br> <br>
+ <button class="cre_btn2" onclick="location.href='list'">회원 목록</button>
+<div>
  </div>
  
  <br>

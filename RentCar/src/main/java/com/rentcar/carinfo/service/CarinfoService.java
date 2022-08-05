@@ -1,6 +1,7 @@
 package com.rentcar.carinfo.service;
 
 import com.rentcar.carinfo.model.CarinfoDTO;
+import com.rentcar.carinfo.model.CaroptionDTO;
 
 import java.util.List;
 import java.util.Map;
@@ -18,5 +19,6 @@ public interface CarinfoService {
     int update(CarinfoDTO dto);
 
     int delete(String carnumber);
-    int updateFile(Map map);
+    int updateFile(CarinfoDTO dto);
+
 }

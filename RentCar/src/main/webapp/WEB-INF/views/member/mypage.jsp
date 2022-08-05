@@ -11,6 +11,13 @@
 
   }
   </script>
+  <style>
+    .container {
+      width: 900px;
+      margin: 0 auto;
+      position: relative;
+    }
+    </style>
 </head>
 <body>
 <body class="wrapper lnbWrapper">

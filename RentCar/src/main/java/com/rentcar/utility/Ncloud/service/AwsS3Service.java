@@ -5,7 +5,6 @@ import com.amazonaws.services.s3.model.AmazonS3Exception;
 import com.amazonaws.services.s3.model.CannedAccessControlList;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.rentcar.utility.Ncloud.AwsS3;
-import com.rentcar.utility.Ncloud.mapper.Ncloudmapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -35,18 +34,16 @@ public class AwsS3Service {
     }
 
     private AwsS3 upload(File file, String dirName) {
-        String key = randomFileName(file, dirName);
+        String key = randomFileName(file, dirName); //UUID
         String path = putS3(file, key);
         System.out.println(key);
         removeFile(file);
 
-        AwsS3 s3 = AwsS3
+        return AwsS3
                 .builder()
                 .key(key)
                 .path(path)
                 .build();
-
-        return s3;
     }
 
     private String randomFileName(File file, String dirName) {
@@ -56,12 +53,11 @@ public class AwsS3Service {
     private String putS3(File uploadFile, String fileName) {
         amazonS3.putObject(new PutObjectRequest(bucket, fileName, uploadFile)
                 .withCannedAcl(CannedAccessControlList.PublicRead));
-
-
         return getS3(bucket, fileName);
     }
 
     public String get(String idx) {
+
         return amazonS3.getUrl(bucket, idx).toString();
     }
 

@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.rentcar.member.model.MemberDTO;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.slf4j.Logger;
@@ -46,36 +47,101 @@ public class LoginController {
   private LoginService service;
 
 
-  @PostMapping("/user/delete")
-  public String delete(LoginDTO dto, HttpSession session, RedirectAttributes ra){
-
-    // 세션에 있는 user를 가져와 user 변수에 넣음
-    LoginDTO user = (LoginDTO) session.getAttribute("user");
-
-    // 세션에있는 비밀번호
-    String sessionPwd = user.getPasswd();
-
-    // dto로 들어오는 비밀번호
-    String dtoPwd = dto.getPasswd();
-
-    if(!(sessionPwd.equals(dtoPwd))) {
-      ra.addFlashAttribute("msg", false);
-      return "redirect:/user/delete";
-    }
-    service.delete(dto);
-
-    session.invalidate();
-
-    return "redirect:/";
 
 
-  }
+//  @PostMapping("/user/delete")
+//  public String delete(LoginDTO dto, HttpSession session, RedirectAttributes ra){
+//
+//    // 세션에 있는 user를 가져와 user 변수에 넣음
+//    LoginDTO user = (LoginDTO) session.getAttribute("user");
+//
+//    // 세션에있는 비밀번호
+//    String sessionPwd = user.getPasswd();
+//
+//    // dto로 들어오는 비밀번호
+//    String dtoPwd = dto.getPasswd();
+//
+//    if(!(sessionPwd.equals(dtoPwd))) {
+//      ra.addFlashAttribute("msg", false);
+//      return "redirect:/user/delete";
+//    }
+//    service.delete(dto);
+//
+//    session.invalidate();
+//
+//    return "redirect:/";
+//
+//
+//  }
 
   @GetMapping("/user/delete")
-  public String delete(){
+  public String delete(String id, HttpSession session, Model model){
+
+    if (id == null) {
+      id = (String) session.getAttribute("id");
+    }
+
+    LoginDTO dto = service.read(id);
+
+    model.addAttribute("dto", dto);
+
+    log.info("dto: "+dto);
 
     return "/user/delete";
   }
+
+
+  @GetMapping("/admin/user/read")
+  public String read(String id, Model model) {
+
+    LoginDTO dto = service.read(id);
+
+    //log.info("dto:"+dto);
+
+    model.addAttribute("dto", dto);
+
+    return "/user/read";
+  }
+
+
+    @RequestMapping("/admin/user/list")
+    public String list(HttpServletRequest request) {
+        // 검색
+        String col = Utility.checkNull(request.getParameter("col"));
+        String word = Utility.checkNull(request.getParameter("word"));
+
+
+        // 페이지
+        int nowPage = 1; // 현재 페이지
+        if (request.getParameter("nowPage") != null) {
+            nowPage = Integer.parseInt(request.getParameter("nowPage"));
+        }
+        int recordPerPage = 5; // 한페이지당 보여줄 레코드갯수
+
+        int sno = (nowPage - 1) * recordPerPage;
+        int eno = recordPerPage;
+
+        Map map = new HashMap();
+        map.put("col", col);
+        map.put("word", word);
+        map.put("sno", sno);
+        map.put("eno", eno);
+
+        int total = service.total(map);
+
+        List<LoginDTO> list = service.list(map);
+
+        String paging = Utility.paging(total, nowPage, recordPerPage, col, word);
+
+        request.setAttribute("list", list);
+        request.setAttribute("nowPage", nowPage);
+        request.setAttribute("col", col);
+        request.setAttribute("word", word);
+        request.setAttribute("paging", paging);
+
+        return "/user/list";
+    }
+
 
 @PostMapping("/user/update")
   public String update(LoginDTO dto, Model model, RedirectAttributes ra){

@@ -2,6 +2,7 @@ package com.rentcar.login.mapper;
 
 import com.rentcar.login.model.LoginDTO;
 
+import java.util.List;
 import java.util.Map;
 
 public interface LoginMapper {
@@ -25,5 +26,9 @@ public interface LoginMapper {
   int update(LoginDTO dto);
 
   void delete(LoginDTO dto);
+
+  int total(Map map);
+
+  List<LoginDTO> list(Map map);
 }
 

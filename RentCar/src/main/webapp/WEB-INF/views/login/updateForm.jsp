@@ -187,7 +187,7 @@ function inCheck(f){
       </div>
       <div>
       <br><br><br>
-           <button class="btn_2" onclick="location.href='/user/delete'">회원탈퇴</button>
+           <button type="button" class="cre_btn2" onclick="location.href='/user/delete'">회원탈퇴</button>
       </div>
     </form>
 

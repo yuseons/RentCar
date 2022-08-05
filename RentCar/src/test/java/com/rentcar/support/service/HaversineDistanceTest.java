@@ -17,10 +17,10 @@ class HaversineDistanceTest {
         Map<String, String> cen = new HashMap<>();
         Map<String, String> target = new HashMap<>();
 
-        cen.put("lat", "37");
-        cen.put("lng","127.0263723554437");
-        target.put("lat", "36");
-        target.put("lng","127.0263723554437");
+        cen.put("lat", "36.618637474678");
+        cen.put("lng","127.46825133157");
+        target.put("lat", "36.610986729739");
+        target.put("lng","127.4685373854");
 
         Double lat1 = Double.parseDouble(cen.get("lat"));
         Double lon1 = Double.parseDouble(cen.get("lng"));

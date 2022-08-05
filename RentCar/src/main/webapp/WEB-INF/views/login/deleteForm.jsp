@@ -30,11 +30,11 @@
 
 				<div class="info_2">
 					<label class="control-label" for="id">아이디</label>
-					<input class="form-control" type="text" id="id" name="id" value="${user.id}" readonly="readonly"/>
+					<input class="form-control" type="text" id="id" name="id" value="${dto.id}" readonly="readonly"/>
 				</div>
 				<div class="info_2">
                		<label class="control-label" for="userName">이름</label>
-               		<input class="form-control" type="text" id="mname" name="mname" value="${user.mname}" readonly="readonly"/>
+               		<input class="form-control" type="text" id="mname" name="mname" value="${dto.mname}" readonly="readonly"/>
                	</div>
 				<div class="info">
 					<label class="control-label" for="passwd">비밀번호</label>
@@ -42,7 +42,7 @@
 				</div>
 				<div align="center">
 				<br><br>
-					<button class="agreebtn" >회원탈퇴</button><br>
+					<button class="agreebtn" onclick="location.href='/user/delete'">회원탈퇴</button><br>
                     <button class="btn_2" onclick="history.back()">취소</button>
 				</div>
 			</form>

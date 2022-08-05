@@ -16,8 +16,8 @@ public class LoginDTO {
   private String grade;
   private String point;
   private String fname;
-  //private MultipartFile fnameMF;
   private String zipcode;
   private String address1;
   private String address2;
+  private String mdate;
 }
