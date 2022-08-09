@@ -1,3 +1,4 @@
+<%@ page contentType="text/html; charset=UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -119,8 +120,7 @@
         #quote {
             position: relative;
             font-size: 20px;
-            margin-bottom: 30%;
-            top: 300px;
+            top: 20%;
             color: gray;
         }
          #quote #quote1 {
@@ -129,9 +129,8 @@
         }
         #quote #quote2 {
             position: absolute;
-            top: 50px;
-            right: 100px;
             color: gray;
+            margin-left: 20px;
         }
     </style>
 </head>

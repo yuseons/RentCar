@@ -266,7 +266,6 @@ for (let i = 0; i < itemlist.length; i++) {
     var iwContent =
         `
 <div class="info-wrap bg-primary w-100 p-md-5 p-4">
-<<<<<<< HEAD
     <h3>` + itemlist[i].place_name + `</h3>
     <p class="mb-4">실시간 충전소 현황은 아래 링크를 클릭해주세요.</p>
             <div class="dbox w-100 d-flex align-items-start">
@@ -277,7 +276,6 @@ for (let i = 0; i < itemlist.length; i++) {
             <p>` + itemlist[i].road_address_name + `</p>
             </div>
         </div>
-
             <div class="dbox w-100 d-flex align-items-center">
             <div class="icon d-flex align-items-center justify-content-center">
         <span class="fa fa-phone"></span>
@@ -286,7 +284,6 @@ for (let i = 0; i < itemlist.length; i++) {
             <p>+ ` + itemlist[i].phone + `</p>
             </div>
         </div>
-
         <div class="dbox w-100 d-flex align-items-center">
             <div class="icon d-flex align-items-center justify-content-center">
             <span class="fa fa-car"></span>
@@ -295,7 +292,6 @@ for (let i = 0; i < itemlist.length; i++) {
             <p> `+ itemlist[i].distance + ` 미터</p>
             </div>
         </div>
-
         <div class="dbox w-100 d-flex align-items-center">
             <div class="icon d-flex align-items-center justify-content-center">
             <span class="fa fa-globe"></span>
@@ -303,37 +299,6 @@ for (let i = 0; i < itemlist.length; i++) {
         <div class="text pl-3">
             <p><a href="`+ itemlist[i].place_url + `" onclick="window.open(this.href, '_blank', 'width=930, height=700'); return false;">` + itemlist[i].place_url + `</a></p>
         </div>
-=======
-<h3>` + itemlist[i].place_name + `</h3>
-<p class="mb-4">실시간 충전소 현황은 아래 링크를 클릭해주세요.</p>
-<div class="dbox w-100 d-flex align-items-start">
-    <div class="icon d-flex align-items-center justify-content-center">
-        <span class="fa fa-map-marker"></span>
-    </div>
-    <div class="text pl-3">
-        <p>` + itemlist[i].road_address_name + `</p>
-    </div>
-</div>
-<div class="dbox w-100 d-flex align-items-center">
-    <div class="icon d-flex align-items-center justify-content-center">
-        <span class="fa fa-phone"></span>
-    </div>
-    <div class="text pl-3">
-        <p>+ ` + itemlist[i].phone + `</p>
-    </div>
-</div>
-<div class="dbox w-100 d-flex align-items-center">
-    <div class="icon d-flex align-items-center justify-content-center">
-        <span class="fa fa-car"></span>
-    </div>
-    <div class="text pl-3">
-        <p> `+ itemlist[i].distance + ` 미터</p>
-    </div>
-</div>
-<div class="dbox w-100 d-flex align-items-center">
-    <div class="icon d-flex align-items-center justify-content-center">
-        <span class="fa fa-globe"></span>
->>>>>>> 51f89d8ea917ad23762a96237ee26c40778e14e2
     </div>
 </div>`,
 
@@ -353,11 +318,7 @@ return positions;
 async function facilitie(lat, lng) {
 // 주소 - 좌표 변환 객체를 생성합니다
 var geocoder = new kakao.maps.services.Geocoder();
-<<<<<<< HEAD
-var imageSrc = '',  
-=======
-var imageSrc = 'https://user-images.githubusercontent.com/65659478/180254439-8cbfce96-f040-4900-9d22-86fd1943d73c.png', // 마커이미지의 주소입니다
->>>>>>> 51f89d8ea917ad23762a96237ee26c40778e14e2
+var imageSrc = '',
     imageSize = new kakao.maps.Size(100, 62), // 마커이미지의 크기입니다
     imageOption = { offset: new kakao.maps.Point(50, 62) }; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
 
@@ -389,8 +350,6 @@ function geo(obj) {
 
     // 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
 var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption);
-
-
 
     var marker = new kakao.maps.Marker({
         map: map, // 마커를 표시할 지도

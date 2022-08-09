@@ -7,10 +7,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -30,11 +27,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
+
 
 import com.rentcar.login.model.LoginDTO;
 import com.rentcar.login.service.LoginService;
-import com.rentcar.utility.UploadLicense;
+
 import com.rentcar.utility.Utility;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -49,30 +46,32 @@ public class LoginController {
 
 
 
-//  @PostMapping("/user/delete")
-//  public String delete(LoginDTO dto, HttpSession session, RedirectAttributes ra){
-//
-//    // 세션에 있는 user를 가져와 user 변수에 넣음
-//    LoginDTO user = (LoginDTO) session.getAttribute("user");
-//
-//    // 세션에있는 비밀번호
-//    String sessionPwd = user.getPasswd();
-//
-//    // dto로 들어오는 비밀번호
-//    String dtoPwd = dto.getPasswd();
-//
-//    if(!(sessionPwd.equals(dtoPwd))) {
-//      ra.addFlashAttribute("msg", false);
-//      return "redirect:/user/delete";
-//    }
-//    service.delete(dto);
-//
-//    session.invalidate();
-//
-//    return "redirect:/";
-//
-//
-//  }
+  @PostMapping("/user/delete")
+  public String delete(String id, String passwd, LoginDTO dto, RedirectAttributes ra, HttpSession session){
+
+  Map map = new HashMap();
+    map.put("id", id);
+    map.put("passwd", passwd);
+
+    int pflag = service.passCheck(map);
+
+
+    if (pflag == 1) {
+
+        service.delete(dto);
+
+
+    }else {
+      ra.addFlashAttribute("msg", false);
+
+      return "redirect:/user/delete";
+    }
+
+    session.invalidate();
+    return "redirect:/";
+  }
+
+
 
   @GetMapping("/user/delete")
   public String delete(String id, HttpSession session, Model model){
@@ -85,7 +84,7 @@ public class LoginController {
 
     model.addAttribute("dto", dto);
 
-    log.info("dto: "+dto);
+    //log.info("dto: "+dto);
 
     return "/user/delete";
   }
