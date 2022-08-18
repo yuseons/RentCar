@@ -1,7 +1,7 @@
-<%@ page contentType="text/html; charset=UTF-8" %> 
- 
-<!DOCTYPE html> 
-<html> 
+<%@ page contentType="text/html; charset=UTF-8" %>
+
+<!DOCTYPE html>
+<html>
 <head>
   <title>notice</title>
   <script src="https://code.jquery.com/jquery-latest.min.js"></script>
@@ -9,7 +9,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
   <meta charset="utf-8">
   <script type="text/JavaScript">
-        
+
 //  function checkIn(f){
 //          if (f.wname.value == ""){
 //               alert("글쓴이를 입력하세요");
@@ -32,15 +32,14 @@
 //              return false;
 //          }
 //  }
-
-
  </script>
+
 </head>
-<body> 
+<body>
 <div class="container">
 <h2 class="col-sm-offset-2 col-sm-10">공지 생성</h2>
-<form class="form-horizontal" id="form1" >
- 
+<div class="form-horizontal" id="form1" >
+
   <div class="form-group">
     <label class="control-label col-sm-2" for="wname">작성자</label>
     <div class="col-sm-6">
@@ -53,7 +52,7 @@
       <input type="text" name="title" id="title" class="form-control" required>
     </div>
   </div>
-  
+
   <div class="form-group">
     <label class="control-label col-sm-2" for="content">내용</label>
     <div class="col-sm-8">
@@ -82,119 +81,47 @@
     <button type="reset" class="btn">취소</button>
    </div>
  </div>
-</form>
+</div>
 </div>
 <script>
-// function add(notice){
-// //wname, title, content, fnameMF, passwd
-
-// return fetch('/notice/create',{
-//                 method: 'POST',
-//                 body: 'notice',
-//                 headers: {
-//       'Content-Type': 'application/json',
-//       // 'Content-Type': 'application/x-www-form-urlencoded',
-//     },
-//                 })
-//                 .then(response =>alert(response.text()))
-//                 .catch(console.log('실패'));
-
-// }
-
-// function create(){
-
-//   var wname = document.getElementById('wname').value;
-//   var title = document.getElementById('title').value;
-//   var content = document.getElementById('content').value;
-//   var fnameMF = document.getElementById('fnameMF').value;
-//   var passwd = document.getElementById('passwd').value;
-//   var key = document.getElementById('fnameMF').value;
-
-
-//  // const form1 = document.querySelector('#form1');
-// const formdata = new FormData();
-// const fileField = document.querySelector('input[type="file"]');
-
-
-// formdata.append('fnameMF', fileField.files[0]);
-
-
-// //alert(wname+" : "+title+" : "+content+" : "+passwd);
-
-//   const notice = {
-
-//     "wname": wname,
-//     "title": title,
-//     "content": content,
-//     "fnameMF": formdata,
-//     "passwd": passwd
-
-//   };
-
-//   add(notice)
-//     .then(result => result.text())
-//     .then(data => console.log(data))
-//     .then(location.href("./notice/list"))
-
-// }
-
 function add(formdata){
-  //wname, title, content, fnameMF, passwd
-
-  for(var pair of formdata.entries()) {
-    alert(pair[0]+ ', '+ pair[1]);
-  }
-  
-  return fetch('/notice/create',{
+  return fetch('/admin/notice/create',{
                   method: 'POST',
                   body: formdata,
-      
+
                   })
-                  .then(response =>alert(response.text()))
-                  .catch(console.log('실패'));
-  
+                  .then(function(response){
+                    return response.text()
+                  })
+                  .catch(alert('글등록에 성공했습니다'));
+
   }
-  
+
   function create(){
-  
+
     var wname = document.getElementById('wname').value;
     var title = document.getElementById('title').value;
     var content = document.getElementById('content').value;
-   // var fnameMF = document.getElementById('fnameMF').value;
     var passwd = document.getElementById('passwd').value;
     var key = document.getElementById('fnameMF').value;
-  
-  
-   // const form1 = document.querySelector('#form1');
+
   const formdata = new FormData();
   const fileField = document.querySelector('input[type="file"]');
-  
+
   formdata.append('wname', wname);
-  formdata.append('fnameMF', fileField.files[0]);
   formdata.append('title', title);
   formdata.append('content', content);
   formdata.append('passwd', passwd);
-  //formdata.append('key', key);
-  
-  
-  //alert(wname+" : "+title+" : "+content+" : "+passwd);
-  
-    // const notice = {
-  
-    //   "wname": wname,
-    //   "title": title,
-    //   "content": content,
-    //  // "fnameMF": fnameMF,
-    //   "passwd": passwd
-  
-    // };
-  
-    add(formdata)
-      .then(result => result.text())
-      .then(data => console.log(data));
-    location.href('/notice/list');
-  }
 
+if(fileField.files[0] != null){
+  formdata.append('fnameMF', fileField.files[0]);
+}
+
+    add(formdata)
+    .then(function(url){
+      return location.href = url
+    });
+  }
 </script>
-</body> 
-</html> 
+</body>
+</html>

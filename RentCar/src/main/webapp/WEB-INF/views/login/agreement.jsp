@@ -1,7 +1,7 @@
-<%@ page contentType="text/html; charset=UTF-8" %> 
- 
-<!DOCTYPE html> 
-<html> 
+<%@ page contentType="text/html; charset=UTF-8" %>
+
+<!DOCTYPE html>
+<html>
 <head>
   <title>회원약관</title>
   <meta charset="utf-8">
@@ -14,9 +14,7 @@
       alert('이용약관에 동의해 주세요.');
       return false; // 서브밋 중지
     }
-
   }
-
   </script>
 
 </head>
@@ -27,13 +25,11 @@
        <h1><strong>약관동의</strong></h1><br>
        <p style="font-size:20px;">이용약관에 동의해 주세요.</p><br><br>
      </div>
-
-<form class="form-horizontal"
-      action="createForm"
-      method="post"
-      onsubmit="return send()"
-      name = "frm"
-      >
+        <form class="form-horizontal"
+        action="/exception/user/createForm"
+        method="post"
+        onsubmit="return send()"
+        name="frm">
 
 
   <div class="form-group" align="center">
@@ -237,5 +233,5 @@
 </form>
 </div>
 </div>
-</body> 
-</html> 
+</body>
+</html>

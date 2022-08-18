@@ -35,10 +35,11 @@
 	<body>
 		<div class="createbox">
 		    <div class="form-block">
+		         <h1 align="center">회원탈퇴 <br><p>비밀번호를 입력해 주세요.</p></h1><br><br><br>
 
 			<form
 			    name="frm"
-			    action="/user/delete"
+			    action="/exception/user/delete"
 			    method="post"
 			    onsubmit="return inCheck(this)"
 			    >

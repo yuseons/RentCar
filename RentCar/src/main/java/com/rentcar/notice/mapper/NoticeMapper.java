@@ -22,4 +22,8 @@ public interface NoticeMapper {
   int update(NoticeDTO dto);
 
   int deleteFile(int noticeno);
+
+  List<NoticeDTO> mainNoticeList();
+
+  String readfile(Map fname);
 }
