@@ -16,8 +16,7 @@ Team Project
 
 ### ⚙️ 개발 환경
 
-운영체제 : Windows 10 <br>
-통합개발환경 : STS(Spring Tool Suite) <br>
+통합개발환경 : IntelliJ <br>
 JDK 버전 : JDK 11 <br>
 데이터 베이스 : MySQL <br>
 빌드 툴 : Gradle <br>
