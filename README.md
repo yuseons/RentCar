@@ -64,7 +64,7 @@ JDK 버전 : JDK 11 <br>
 
 <img src="https://github.com/yuseons/RentCar/blob/master/image/tool.jpg">
 
-## 📌 주요 기능
+## 📌 기능
 
 <img src="https://github.com/yuseons/RentCar/blob/master/image/User Interface.jpg">
 <img src="https://github.com/yuseons/RentCar/blob/master/image/1.jpg">
@@ -75,4 +75,4 @@ JDK 버전 : JDK 11 <br>
 ## 📌 DB
 
 <img src="https://github.com/yuseons/RentCar/blob/master/image/db1.jpg">
-<img src="https://github.com/yuseons/RentCar/blob/master/image/db2.jpg">
+<img src="https://github.com/yuseons/RentCar/blob/master/image/db2.png">
