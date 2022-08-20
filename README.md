@@ -47,6 +47,12 @@ Team Project
 
 <br>
 
+### ⏰ 개발 기간
+
+2022.06.29 ~ 2022.08.18
+
+<br>
+
 ### ⚙️ 개발 환경
 
 통합개발환경 : IntelliJ <br>
@@ -56,24 +62,17 @@ JDK 버전 : JDK 11 <br>
 
 ### ⚒️ Tools
 
-<br>
+<img src="https://github.com/yuseons/RentCar/blob/master/image/tool.jpg">
 
-![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=java&logoColor=white)
-![Spring](https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white)
+## 📌 주요 기능
 
-<br>
-
-![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
-![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+<img src="https://github.com/yuseons/RentCar/blob/master/image/User Interface.jpg">
+<img src="https://github.com/yuseons/RentCar/blob/master/image/1.jpg">
+<img src="https://github.com/yuseons/RentCar/blob/master/image/2.jpg">
 
 <br>
 
-![MySQL](https://img.shields.io/badge/mysql-%2300f.svg?style=for-the-badge&logo=mysql&logoColor=white)
+## 📌 DB
 
-\- Infra
-
-![Docker](https://img.shields.io/badge/docker-2496ED.svg?style=for-the-badge&logo=docker&logoColor=white)
-![Jenkins](https://img.shields.io/badge/jenkins-D24939.svg?style=for-the-badge&logo=jenkins&logoColor=white)
-![AWS](https://img.shields.io/badge/NAVER-03C75A.svg?style=for-the-badge&logo=Naver&logoColor=white)
-![Nginx](https://img.shields.io/badge/NginX-009639.svg?style=for-the-badge&logo=NginX&logoColor=white)
+<img src="https://github.com/yuseons/RentCar/blob/master/image/db1.jpg">
+<img src="https://github.com/yuseons/RentCar/blob/master/image/db2.jpg">
