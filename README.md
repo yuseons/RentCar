@@ -64,15 +64,94 @@ JDK 버전 : JDK 11 <br>
 
 <img src="https://github.com/yuseons/RentCar/blob/master/image/tool.jpg">
 
+## 📌 DB
+
+<img src="https://github.com/yuseons/RentCar/blob/master/image/db1.jpg">
+<img src="https://github.com/yuseons/RentCar/blob/master/image/db2.png">
+
 ## 📌 기능
 
 <img src="https://github.com/yuseons/RentCar/blob/master/image/User Interface.jpg">
 <img src="https://github.com/yuseons/RentCar/blob/master/image/1.jpg">
 <img src="https://github.com/yuseons/RentCar/blob/master/image/2.jpg">
 
+## 📌 핵심 기능
+
+### 1. OCR을 활용한 운전면허증 유효성 검사
+
+- 운전면허증을 소지해야만 회원가입 가능
+  - 라이선스의 사전 체크로 유저 신뢰성 향상
+  - 사고 및 범죄 발생시 운전자 라이선스 정보로 조회가능
+- 운전면허증의 운전면허번호와 주민등록번호를 OCR로 추출한 후 운전면허증 유효성 검사 실시
+
+<img src="https://github.com/yuseons/RentCar/blob/master/image/ocr.png">
+
+<img src="https://github.com/yuseons/RentCar/blob/master/image/ocr2.png">
+
+<img src="https://github.com/yuseons/RentCar/blob/master/image/ocr3.png">
+
+### 2. Object Storage API 사용
+
+- Object Storage
+
+  - 인터넷상에 여러 사용자가 원하는 데이터를 저장하고 공유할 수 있도록 오브젝트 형태로 저장되는 스토리지
+  - 대용량 저장소로 사용하며, 중요한 데이터를 백업 및 장기 보관할 수 있도록 구성
+
+- 파일 관리가 필요한 기능은 API를 연결
+
+  - 파일 삭제, 수정, 등록 사용
+  - Mysql 에 저장된 Path / Key 값으로 파일 관리
+
+- 서버 용량 및 부하 걱정을 안해도 됩니다.
+- 파일을 관리하는 로직도 어렵게 구현할 필요가 없습니다.
+
+<img src="https://github.com/yuseons/RentCar/blob/master/image/ObjectStorage.png">
+
+<img src="https://github.com/yuseons/RentCar/blob/master/image/ObjectStorage2.png">
+
+### 3. SummerNote 사용
+
+- CK Editer 대신 SummerNote 사용
+
+  - CK Editer의 복잡한 설치와 제한된 사용 기간
+  - 서머노트의 편리한 이미지 처리
+
+- SummerNote의 편리한 이미지 핸들링
+
+<img src="https://github.com/yuseons/RentCar/blob/master/image/summernote.png">
+
+### 4. 접근 권한
+
+- admin(관리자)이 아닌 사용자가 admin 페이지로 접근 할 경우 error 페이지/로그인 창으로 이동
+
+<img src="https://github.com/yuseons/RentCar/blob/master/image/admin.png">
+
+### 5. GeoLocation API , Kakao Map API 사용
+
+- 전기차 충전소 위치 제공
+- 차량 렌트/반납 위치 제공
+
+<img src="https://github.com/yuseons/RentCar/blob/master/image/map.png">
+
+- 도움 요청 기능
+  - 차량 방전 등 도움이 필요할 경우 도움을 요청할 수 있습니다.
+
+<img src="https://github.com/yuseons/RentCar/blob/master/image/support.png">
+
+### 6. 거리 알고리즘 적용
+
+- 운전자의 위치를 고려한 정보만 제공
+- 거리 알고리즘을 적용하고 데이터를 병렬 처리하여
+  서버에 부하를 해결
+
 <br>
 
-## 📌 DB
+- 최적의 위치 정보 획득을 위한 Haversine 알고리즘
 
-<img src="https://github.com/yuseons/RentCar/blob/master/image/db1.jpg">
-<img src="https://github.com/yuseons/RentCar/blob/master/image/db2.png">
+<img src="https://github.com/yuseons/RentCar/blob/master/image/Haversine.png">
+
+<img src="https://github.com/yuseons/RentCar/blob/master/image/Haversine2.png">
+
+- 병렬 처리를 통한 데이터 처리 개선
+
+<img src="https://github.com/yuseons/RentCar/blob/master/image/Haversine3.png">
